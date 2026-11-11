@@ -501,7 +501,17 @@ document.getElementById('form').addEventListener('submit',e=>{
   const nome=document.getElementById('f-nome'), mail=document.getElementById('f-mail');
   if(!nome.value.trim()){msg.textContent='Informe seu nome para continuarmos.';nome.focus();return;}
   if(!/^\S+@\S+\.\S+$/.test(mail.value)){msg.textContent='Confira o e-mail: ele precisa ter o formato nome@dominio.com.';mail.focus();return;}
-  msg.textContent='Prévia do site: este formulário ainda precisa ser conectado ao e-mail ou WhatsApp da NexHub para enviar contatos.';
+  const val=id=>document.getElementById(id).value.trim();
+  const linhas=['Olá, NexHub! Vim pelo site e gostaria de conversar.','',
+    '*Nome:* '+val('f-nome'),
+    val('f-esc')?'*Escritório:* '+val('f-esc'):null,
+    '*E-mail:* '+val('f-mail'),
+    val('f-tel')?'*WhatsApp:* '+val('f-tel'):null,
+    '*Momento do escritório:* '+val('f-mom')].filter(l=>l!==null);
+  const url='https://wa.me/558897475825?text='+encodeURIComponent(linhas.join('\n'));
+  msg.textContent='Abrindo o WhatsApp da NexHub com sua mensagem…';
+  const w=window.open(url,'_blank');
+  if(w) w.opener=null; else location.href=url;
 });
 
 /* ---------------- Nav ---------------- */
