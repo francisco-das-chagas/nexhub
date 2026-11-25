@@ -33,7 +33,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--wine);color:var(--paper)}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--wine);outline-offset:3px;border-radius:2px}
@@ -292,6 +292,12 @@ section{position:relative}
 .foot__contact svg{width:16px;height:16px;color:var(--rose)}
 .foot__legal{display:flex;flex-direction:column;align-items:flex-end;gap:4px;font-size:13px}
 
+/* Método com foto */
+.method-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(32px,6vw,90px);align-items:center}
+.method-photo{margin:0;border-radius:4px;overflow:hidden;aspect-ratio:1100/891;background:var(--paper-2)}
+.method-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block}
+#metodo{padding-block:clamp(80px,8vw,120px)}
+
 /* ---------- Responsive ---------- */
 @media (max-width:1000px){
   .nav__links{display:none}
@@ -303,6 +309,7 @@ section{position:relative}
   .pillar:nth-child(even){padding-left:22px!important}
   .stage{grid-template-columns:minmax(0,1fr);gap:10px}
   .founders{grid-template-columns:minmax(0,1fr)}
+  .method-head{grid-template-columns:minmax(0,1fr)}
   .pillars-side{justify-self:start;align-items:flex-start}
   .statement__art{position:static;width:min(100%,360px);margin:0 0 36px auto;display:block}
   .final__photo{max-height:520px}
@@ -542,9 +549,14 @@ section{position:relative}
     <!-- MÉTODO -->
     <section class="band" id="metodo">
       <div class="wrap">
-        <div class="mono kicker" data-reveal>Método NexHub</div>
-        <h2 class="display h2" data-reveal>Da compreensão do cenário à aplicação.</h2>
-        <p data-reveal style="color:var(--ink-soft);max-width:56ch;margin:24px 0 0">O escopo e a profundidade de cada etapa são definidos conforme o serviço contratado e a realidade do escritório.</p>
+        <div class="method-head">
+          <div>
+            <div class="mono kicker" data-reveal>Método NexHub</div>
+            <h2 class="display h2" data-reveal>Da compreensão do cenário à aplicação.</h2>
+            <p data-reveal style="color:var(--ink-soft);max-width:56ch;margin:24px 0 0">O escopo e a profundidade de cada etapa são definidos conforme o serviço contratado e a realidade do escritório.</p>
+          </div>
+          <figure class="method-photo" data-reveal><img src="assets/img/metodo.jpg?v=2" alt="Leandra Onzi e Karol Duarte segurando folhas com a logo e o X da NexHub" loading="lazy"></figure>
+        </div>
         <div class="steps" id="steps">
           <div class="steps__line"><i id="stepsLine"></i></div>
           <div class="step"><div class="step__n">1</div><h3>Compreender</h3><p>Escutamos os gestores, analisamos a operação e reunimos as informações necessárias.</p></div>
