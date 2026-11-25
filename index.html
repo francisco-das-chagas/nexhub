@@ -341,11 +341,7 @@ section{position:relative}
   .nav .btn--sm{padding:10px 14px;font-size:13px}
   .loader__step b{font-size:18px}
 }
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-  html{scroll-behavior:auto}
-  .marquee__track{-webkit-animation-duration:60s!important;animation-duration:60s!important;-webkit-animation-iteration-count:infinite!important;animation-iteration-count:infinite!important}
-}
+
 </style>
 </head>
 <body>
@@ -356,7 +352,6 @@ section{position:relative}
 <div class="loader" aria-hidden="true">
   <div class="loader__top">
     <span class="mask"><span class="loader__brand"><svg class="logo__img" viewBox="0 0 1157.18 244.56" role="img" aria-label="NexHub Gestão"><use href="#nexhub-logo"/></svg></span></span>
-    <span class="mask"><span class="mono" style="color:var(--ink-soft)">Estratégia | Gestão | Inteligência</span></span>
   </div>
   <div class="loader__bottom">
     <span class="mask"><span class="loader__count"><span id="ct">00</span><sup>%</sup></span></span>
@@ -616,7 +611,7 @@ section{position:relative}
 <script>
 (function(){
 const root=document.documentElement;
-const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduce=false; // animações sempre ligadas, mesmo com "Reduzir Movimento" no aparelho
 const hasGSAP=typeof gsap!=='undefined';
 const safety=setTimeout(()=>root.classList.remove('is-loading'),7000);
 
